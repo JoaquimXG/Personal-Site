@@ -1,28 +1,57 @@
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
-//Styles 
-import {cornflowerBlue} from '../GlobalStyles'
+//Styles
+import { shuttleGray, rhino } from "../GlobalStyles";
 
 const Column = styled.div`
+    position: absolute;
+    top: 0px;
+    bottom: 0px; 
+    right: 0px;
+    left: 0px;
+    padding-top: 10px;
+    width: 40px;
     display: flex;
     flex-direction: column;
-    background: ${cornflowerBlue};
-    justify-content: center;
-`
+`;
 
-const Number = styled.div`
-    display: flex;
-    align-items: center;
-`
+const NumberRow = styled.div`
+    width: 100vw;
+    letter-spacing: 1px;
+    color: ${rhino};
+    font-family: "Inconsolata", monospace;
+    letter-spacing: 1px;
 
-export default function NumberColumn(){
-    var numbers = [1,2,3,4];
+    &:hover:before {
+            color: ${shuttleGray};
+    }
 
+    &:before {
+        width: 40px;
+        content: '${props => (props.number)}';
+        text-align: center;
+        padding-left: 20px;
+        font-size: 20px;
+    }
+`;
+
+export default function NumberColumn() {
+    var numbers = [];
+
+    for (var i = 0; i < 100; i++) {
+        if (i < 10) {
+            numbers.push(`0${i}`);
+            continue;
+        }
+        numbers.push(i);
+    }
 
     return (
-        <Column >
-            {numbers.map(i => {return <Number>{i}</Number>})}
+        <Column>
+            {numbers.map(i => {
+                return <NumberRow number={`${i}`}/>;
+            })}
         </Column>
     );
-};
+}
