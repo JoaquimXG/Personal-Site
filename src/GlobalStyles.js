@@ -34,17 +34,6 @@ const GlobalStyle = createGlobalStyle`
         widht: 100vw;
     }
 
-    .mainBody {
-        width: 100vw;
-        padding 60px;
-        text-align: left;
-        font-size: calc(10px + 2vmin);
-        color: ${lavendar};
-    }
-
-    .App-header {
-    }
-
     &::-webkit-scrollbar {
         width: 10px; 
         height 10px;

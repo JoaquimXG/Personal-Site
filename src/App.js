@@ -3,6 +3,7 @@ import React, { Component } from "react";
 //Global styles
 import GlobalStyle from './GlobalStyles';
 import NumberColumn from "./components/NumberColumn";
+import MainBody from './components/MainBody'
 
 class App extends Component {
     render() {
@@ -10,9 +11,7 @@ class App extends Component {
             <div className="App">
                 <GlobalStyle />
                 <NumberColumn/>
-                <div className="mainBody">
-                    <p>test</p>
-                </div>
+                <MainBody/> 
             </div>
         );
     }
