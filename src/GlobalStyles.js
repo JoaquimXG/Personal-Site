@@ -1,10 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 export const blueCharcoal = "#282C34";
-export const rhino = '#3B414E';
+export const rhino = "#3B414E";
 export const shuttleGray = "#5C6370";
 export const heather = "#ABB2BF";
-export const lavendar = "#EAF1FD"
+export const lavendar = "#EAF1FD";
 export const olivine = "#98C379";
 export const froly = "#E06C75";
 export const cornflowerBlue = "#61AFEF";
@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        margin: 0 0 0 0px;
+        margin: 0;
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 
@@ -25,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         background: ${blueCharcoal};
-
     }
 
     .App {

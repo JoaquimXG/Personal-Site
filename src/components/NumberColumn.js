@@ -14,6 +14,7 @@ const Column = styled.div`
     width: 40px;
     display: flex;
     flex-direction: column;
+    z-index: -1;
 `;
 
 const NumberRow = styled.div`
