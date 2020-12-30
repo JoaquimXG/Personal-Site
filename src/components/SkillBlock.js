@@ -4,24 +4,28 @@ import styled from "styled-components";
 const SkillBlockContainer = styled.div`
     display: flex;
     flex-direction: column;
-    text-align: center
-    width: 33%;
-    margin: 0 0 50px;
+    align-items: center;
+    margin: 0 1rem 3rem;
 `;
 
 const SkillsLogo = styled.img`
-    width: 80px;
+    width: calc(2rem + 1vw);
+    display: flex;
 `
 
-const SkillTitle = styled.h5`
-    color: red;
+const SkillTitle = styled.span`
+    text-align: center;
+    font-weight: 100; 
+    color: ${props => props.color};
+    font-size: 1.2em;
+    padding: 1rem 0;
 `;
 
 export default function SkillBlock(props) {
     return (
         <SkillBlockContainer>
             <SkillsLogo src={props.src} />
-            <SkillTitle>BASH</SkillTitle>
+            <SkillTitle color={props.color}>{props.title}</SkillTitle>
         </SkillBlockContainer>
     );
 }
