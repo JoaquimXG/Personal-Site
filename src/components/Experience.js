@@ -12,8 +12,8 @@ export default function Experience(props){
     return (
         <>
             <ExperienceSpan>{startDate} - {endDate}</ExperienceSpan><br/>
-            <ExperienceSpan>{location}</ExperienceSpan><br/>
-            <ExperienceSpan>{role}</ExperienceSpan><br/><br/>
+            <ExperienceSpan>{role}</ExperienceSpan><br/>
+            <ExperienceSpan>{location}</ExperienceSpan><br/><br/>
         </>
     )
 }

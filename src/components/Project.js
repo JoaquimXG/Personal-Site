@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {cornflowerBlue} from '../GlobalStyles'
+import {olivine} from '../GlobalStyles'
 
 const ProjectSpan = styled.span`
     font-size: 1.2rem;
@@ -8,7 +8,7 @@ const ProjectSpan = styled.span`
 `
 
 const Link = styled.a`
-    color: ${cornflowerBlue};
+    color: ${olivine};
     text-decoration: none;
 `
 
@@ -17,9 +17,8 @@ export default function Project(props){
 
     return (
         <>
-            <ProjectSpan><Link href={href}>{name}</Link></ProjectSpan><br/>
-            <ProjectSpan>{description}</ProjectSpan><br/>
-            <ProjectSpan>{year}</ProjectSpan><br/><br/>
+            <ProjectSpan><Link href={href}>{name}</Link> ({year})</ProjectSpan><br/>
+            <ProjectSpan>{description}</ProjectSpan><br/><br/>
         </>
     )
 }

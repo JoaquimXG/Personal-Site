@@ -46,6 +46,21 @@ export default function Body() {
             <TwinSection>
                 <Section
                     twin={true}
+                    title={<Title color={mediumOrchid}>Projects</Title>}
+                    content={projectData.map(project => {
+                        return (
+                            <Project
+                                name={project.name}
+                                description={project.description}
+                                year={project.year}
+                                href={project.href}
+                            ></Project>
+                        );
+                    })}
+                />
+                <Section
+                    twin={true}
+                    align="right"
                     title={
                         <Title color={cornflowerBlue}>Work + Education</Title>
                     }
@@ -57,21 +72,6 @@ export default function Body() {
                                 location={experience.location}
                                 role={experience.role}
                             ></Experience>
-                        );
-                    })}
-                />
-                <Section
-                    twin={true}
-                    align="right"
-                    title={<Title color={mediumOrchid}>Projects</Title>}
-                    content={projectData.map(project => {
-                        return (
-                            <Project
-                                name={project.name}
-                                description={project.description}
-                                year={project.year}
-                                href={project.href}
-                            ></Project>
                         );
                     })}
                 />

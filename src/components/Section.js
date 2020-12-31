@@ -1,20 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-import {
-    lavendar,
-    cornflowerBlue,
-    olivine,
-    froly,
-    corvette
-} from "../GlobalStyles";
-
 const SectionContianer = styled.section`
     text-align: ${props => props.align};
     ${({ align }) =>
         align == "right" &&
-        `
+        ` @media (max-width: 800px){
         align-self: flex-end;
+    }
             `}
 
     ${({ twin }) =>
