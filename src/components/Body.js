@@ -1,87 +1,28 @@
 import React from "react";
-import styled from "styled-components";
 
+//Global Styles
 import {
-    lavendar,
     cornflowerBlue,
     olivine,
     froly,
     mediumOrchid,
-    corvette
+    lavendar
 } from "../GlobalStyles";
+
+//Styled components
+import MainBody from "./styled/MainBody";
+import Title from "./styled/Title";
+import Para from "./styled/Para";
+import TwinSection from "./TwinSection";
+import Project from "./Project";
 import Experience from "./Experience";
 import Social from "./Social";
 import TechnicalSkills from "./TechnicalSkills";
 import Section from "./Section";
-import Project from "./Project";
-import TwinSection from "./TwinSection";
 
-const MainBody = styled.div`
-    width: 100vw;
-    max-width: 1100px;
-    text-align: left;
-    color: ${lavendar};
-    font-family: "Inconsolata", monospace;
-    padding 5rem 2.5rem 2rem;
-    margin: auto;
-`;
-
-const Title = styled.h1`
-    color: ${props => props.color};
-    font-family: "Roboto", sans-serif;
-    font-size: 2rem;
-    margin: 0 0 0.8rem 0;
-`;
-
-const Para = styled.p`
-    font-size: 1.2rem;
-    margin: 0.8rem 0 1.5rem;
-`;
-
-const experienceData = [
-    {
-        start: "2020",
-        end: "Present",
-        location: "Aberdeen Cyber Security",
-        role: "Cyber Security Engineer"
-    },
-    {
-        start: "2020",
-        end: "Present",
-        location: "Robert Gordon University",
-        role: "Computer Science BSc (Hons)"
-    },
-    {
-        start: "2019",
-        end: "2020",
-        location: "North East Scotland College",
-        role: "Cyber Security HNC"
-    }
-];
-
-const projectData = [
-    {
-        name: "POD Colors",
-        description:
-            "A personality test website for Robert Gordon University HR department",
-        year: "2020",
-        href: "http://google.com"
-    },
-    {
-        name: "POD Colors",
-        description:
-            "A personality test website for Robert Gordon University HR department",
-        year: "2020",
-        href: "http://google.com"
-    },
-    {
-        name: "POD Colors",
-        description:
-            "A personality test website for Robert Gordon University HR department",
-        year: "2020",
-        href: "http://google.com"
-    }
-];
+//Data
+import projectData from '../data/project'
+import experienceData from '../data/experience'
 
 export default function Body() {
     return (
