@@ -29,10 +29,10 @@ const SkillsContainer = styled.div`
 export default function TechnicalSkills(){
     return (
         <SkillsContainer>
-            <SkillBlock src={bash} color={white} title={"Bash"} />
             <SkillBlock src={graphQl} color={gqlColor} title={"GraphQL"} />
             <SkillBlock src={docker} color={dockerColor} title={"Docker"} />
             <SkillBlock src={intune} color={azureColor} title={"Intune"} />
+            <SkillBlock src={bash} color={white} title={"Bash"} />
             <SkillBlock src={react} color={reactColor} title={"React"} />
             <SkillBlock src={python} color={pythonColor} title={"Python"} />
             <SkillBlock src={aws} color={awsColor} title={"AWS"} />

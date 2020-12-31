@@ -14,10 +14,12 @@ export const corvette = "#E5C074";
 const GlobalStyle = createGlobalStyle`
     *{
         box-sizing: border-box;
+        max-width:100%;
     }
 
     body {
         font-size: min(20px, calc(0.6em + 1.2vw));
+        letter-spacing: 0.1rem;
         margin: 0;
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -29,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .App {
-        widht: 100vw;
+        width: 100vw;
         display: flex;
         flex-direction: row;
         padding-left: 40px;

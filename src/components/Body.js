@@ -6,12 +6,15 @@ import {
     cornflowerBlue,
     olivine,
     froly,
+    mediumOrchid,
     corvette
 } from "../GlobalStyles";
 import Experience from "./Experience";
 import Social from "./Social";
 import TechnicalSkills from "./TechnicalSkills";
 import Section from "./Section";
+import Project from "./Project";
+import TwinSection from "./TwinSection";
 
 const MainBody = styled.div`
     width: 100vw;
@@ -19,7 +22,7 @@ const MainBody = styled.div`
     text-align: left;
     color: ${lavendar};
     font-family: "Inconsolata", monospace;
-    padding 5rem 2rem 2rem 2rem;
+    padding 5rem 2.5rem 2rem;
     margin: auto;
 `;
 
@@ -31,7 +34,6 @@ const Title = styled.h1`
 `;
 
 const Para = styled.p`
-    font-family: "Inconsolata", monospace;
     font-size: 1.2rem;
     margin: 0.8rem 0 1.5rem;
 `;
@@ -57,6 +59,30 @@ const experienceData = [
     }
 ];
 
+const projectData = [
+    {
+        name: "POD Colors",
+        description:
+            "A personality test website for Robert Gordon University HR department",
+        year: "2020",
+        href: "http://google.com"
+    },
+    {
+        name: "POD Colors",
+        description:
+            "A personality test website for Robert Gordon University HR department",
+        year: "2020",
+        href: "http://google.com"
+    },
+    {
+        name: "POD Colors",
+        description:
+            "A personality test website for Robert Gordon University HR department",
+        year: "2020",
+        href: "http://google.com"
+    }
+];
+
 export default function Body() {
     return (
         <MainBody>
@@ -64,7 +90,7 @@ export default function Body() {
                 title={<Title color={olivine}>Hi, I'm Joaquim</Title>}
                 content={
                     <Para>
-                        I’m a Cyber Security Engineer and developer with a keen
+                        I’m a Cyber Security Analyst and developer with a keen
                         interest in cloud technologies. Working with Aberdeen
                         Cyber Security I have gained experience in providing
                         effective, user-focused security solutions in the remote
@@ -75,22 +101,40 @@ export default function Body() {
                     </Para>
                 }
             />
-            <Section
-                content={<TechnicalSkills />}
-            />
-            <Section
-                title={<Title color={cornflowerBlue}>Work + Education</Title>}
-                content={experienceData.map(e => {
-                    return (
-                        <Experience
-                            startDate={e.start}
-                            endDate={e.end}
-                            location={e.location}
-                            role={e.role}
-                        ></Experience>
-                    );
-                })}
-            />
+            <Section content={<TechnicalSkills />} />
+            <TwinSection>
+                <Section
+                    twin={true}
+                    title={
+                        <Title color={cornflowerBlue}>Work + Education</Title>
+                    }
+                    content={experienceData.map(experience => {
+                        return (
+                            <Experience
+                                startDate={experience.start}
+                                endDate={experience.end}
+                                location={experience.location}
+                                role={experience.role}
+                            ></Experience>
+                        );
+                    })}
+                />
+                <Section
+                    twin={true}
+                    align="right"
+                    title={<Title color={mediumOrchid}>Projects</Title>}
+                    content={projectData.map(project => {
+                        return (
+                            <Project
+                                name={project.name}
+                                description={project.description}
+                                year={project.year}
+                                href={project.href}
+                            ></Project>
+                        );
+                    })}
+                />
+            </TwinSection>
             <Title color={froly}>Contact</Title>
             <Para>
                 If you would like to get in contact, reach me by email at
