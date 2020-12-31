@@ -15,25 +15,25 @@ import Section from "./Section";
 
 const MainBody = styled.div`
     width: 100vw;
+    max-width: 1100px;
     text-align: left;
-    font-size: calc(8px + 2vmin);
     color: ${lavendar};
     font-family: "Inconsolata", monospace;
-    padding 90px 30px 30px 70px;
-    margin-left: 0;
+    padding 5rem 2rem 2rem 2rem;
+    margin: auto;
 `;
 
 const Title = styled.h1`
     color: ${props => props.color};
     font-family: "Roboto", sans-serif;
-    font-size: 2em;
-
-    margin: 0 0 30px 0;
+    font-size: 2rem;
+    margin: 0 0 0.8rem 0;
 `;
 
 const Para = styled.p`
     font-family: "Inconsolata", monospace;
-    margin: 30px 0 50px;
+    font-size: 1.2rem;
+    margin: 0.8rem 0 1.5rem;
 `;
 
 const experienceData = [

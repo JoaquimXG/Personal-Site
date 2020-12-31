@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
+        font-size: min(20px, calc(0.6em + 1.2vw));
         margin: 0;
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -28,9 +29,10 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .App {
+        widht: 100vw;
         display: flex;
         flex-direction: row;
-        widht: 100vw;
+        padding-left: 40px;
     }
 
     &::-webkit-scrollbar {

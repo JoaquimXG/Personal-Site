@@ -5,13 +5,16 @@ const linkedin = require('../image/linkedin.svg');
 const github = require('../image/github.svg');
 
 const SocialIcon = styled.img`
-    width: calc(10px + 6vmin);
+    width: calc(0.5em + 6vw);
+    max-width: 50px;
+    min-width: 35px;
 `
 
 const SocialContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    margin: 4rem 1rem;
 `
 
 export default function Social() {

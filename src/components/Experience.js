@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const ExperienceSpan = styled.span`
-    line-height: 25px;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
 `
 
 export default function Experience(props){
