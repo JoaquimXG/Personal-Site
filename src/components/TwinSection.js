@@ -12,7 +12,6 @@ const TwinSectionContainer = styled.section`
 `;
 
 export default function TwinSection(props) {
-    console.log(props.children);
     return (
         <TwinSectionContainer>
             {props.children.map(child => {

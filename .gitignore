@@ -29,3 +29,6 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+/artifacts/client-stats.json
+/artifacts/react-static-build-state.json
+/artifacts/static-app.js

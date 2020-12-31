@@ -14,7 +14,7 @@ const SocialContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin: 4rem 1rem;
+    margin: 4rem 1rem 1rem;
 `
 
 export default function Social() {
