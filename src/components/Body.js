@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 //Global Styles
 import {
@@ -21,12 +21,25 @@ import TechnicalSkills from "./TechnicalSkills";
 import Section from "./Section";
 
 //Data
-import projectData from '../data/project'
-import experienceData from '../data/experience'
+import projectData from "../data/project";
+import experienceData from "../data/experience";
 
-export default function Body() {
+export default function Body(props) {
+    const myRef = useRef(undefined)
+
+    useEffect(() => {
+        function handleResize() {
+            props.getMainBodyHeight(myRef.current.getBoundingClientRect().height)
+        }
+
+        window.addEventListener("resize", handleResize)
+
+        handleResize();
+        return () => window.removeEventListener("resize", handleResize)
+    }, []);
+
     return (
-        <MainBody>
+        <MainBody ref={myRef}>
             <Section
                 title={<Title color={olivine}>Hi, I'm Joaquim</Title>}
                 content={
@@ -42,14 +55,16 @@ export default function Body() {
                     </Para>
                 }
             />
-            <Section content={<TechnicalSkills />} />
+            <Section id="hello" content={<TechnicalSkills />} />
             <TwinSection>
                 <Section
+                    key="left"
                     twin={true}
                     title={<Title color={mediumOrchid}>Projects</Title>}
-                    content={projectData.map(project => {
+                    content={projectData.map((project, i) => {
                         return (
                             <Project
+                                key={i}
                                 name={project.name}
                                 description={project.description}
                                 year={project.year}
@@ -59,14 +74,16 @@ export default function Body() {
                     })}
                 />
                 <Section
+                    key="right"
                     twin={true}
                     align="right"
                     title={
                         <Title color={cornflowerBlue}>Work + Education</Title>
                     }
-                    content={experienceData.map(experience => {
+                    content={experienceData.map((experience, i) => {
                         return (
                             <Experience
+                                key={i}
                                 startDate={experience.start}
                                 endDate={experience.end}
                                 location={experience.location}
