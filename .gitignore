@@ -32,3 +32,6 @@ typings/
 /artifacts/client-stats.json
 /artifacts/react-static-build-state.json
 /artifacts/static-app.js
+/artifacts/react-static-templates.js
+/dist.zip
+/artifacts/react-static-templates.js

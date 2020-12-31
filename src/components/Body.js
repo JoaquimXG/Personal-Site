@@ -6,7 +6,6 @@ import {
     olivine,
     froly,
     mediumOrchid,
-    lavendar
 } from "../GlobalStyles";
 
 //Styled components
