@@ -17,6 +17,7 @@ const Column = styled.div`
     width: 100vw;
     display: flex;
     flex-direction: column;
+    z-index: -1;
 `;
 
 const NumberRow = styled.div`
@@ -24,6 +25,7 @@ const NumberRow = styled.div`
     letter-spacing: 1px;
     color: ${({index, number}) => index === number ? shuttleGray : rhino};
     font-family: "Inconsolata", monospace;
+    font-size: 20px;
 
     &:before {
         width: 40px;

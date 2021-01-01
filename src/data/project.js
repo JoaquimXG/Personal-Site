@@ -4,7 +4,7 @@ export default [
         description:
             "A personality test web-app for Robert Gordon University HR department",
         year: "2020",
-        href: "http://google.com"
+        href: "./podColours/"
     },
     {
         name: "Bookmark",
@@ -33,5 +33,4 @@ export default [
         year: "2019",
         href: "https://github.com/JoaquimXG/DES-Encryption"
     }
-
 ]

@@ -9,7 +9,7 @@ const SkillBlockContainer = styled.div`
 `;
 
 const SkillsLogo = styled.img`
-    width: calc(2rem + 1vw);
+    width: calc(32px + 1vw);
     display: flex;
 `
 
@@ -17,7 +17,7 @@ const SkillTitle = styled.span`
     text-align: center;
     font-weight: 100; 
     color: ${props => props.color};
-    font-size: 1.2em;
+    font-size: 19px;
     padding: 1rem 0;
 `;
 
