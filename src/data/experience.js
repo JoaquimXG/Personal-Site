@@ -3,7 +3,7 @@ export default [
         start: "2020",
         end: "Present",
         location: "Aberdeen Cyber Security",
-        role: "Cyber Security Engineer"
+        role: "Cyber Security Analyst"
     },
     {
         start: "2020",

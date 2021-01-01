@@ -19,6 +19,9 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-size: min(20px, calc(0.6em + 1.2vw));
+        @media (min-width: 800px){
+            font-size: min(32px, calc(0.6em + 1.2vw));
+        }
         letter-spacing: 0.1rem;
         margin: 0;
         padding: 0;

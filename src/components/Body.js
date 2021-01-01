@@ -49,7 +49,7 @@ export default function Body(props) {
                         effective, user-focused security solutions in the remote
                         working age. Outside of work, I am studying towards a
                         Computer Science degree at Robert Gordon University,
-                        with a focus on designing and implementing enterprise
+                        with a focus on designing and deploying enterprise
                         apps at scale.
                     </Para>
                 }
@@ -77,7 +77,7 @@ export default function Body(props) {
                     twin={true}
                     align="right"
                     title={
-                        <Title color={cornflowerBlue}>Work + Education</Title>
+                        <Title color={cornflowerBlue}>Work & Education</Title>
                     }
                     content={experienceData.map((experience, i) => {
                         return (
