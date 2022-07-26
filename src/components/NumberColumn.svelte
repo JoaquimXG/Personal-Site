@@ -7,9 +7,16 @@
   export let highlighted;
   export let height;
   export let max = 120;
+  export let yPos;
+  export let totalScroll;
 
+  export const updatePositionOnScroll = (e) => {
+    totalScroll = e.currentTarget.scrollY + yPos;
+    highlighted = Math.floor((totalScroll - padding) / rowHeight);
+  }
 
   export const setPosition = (e) => {
+    yPos = e.clientY
     highlighted = Math.floor((e.pageY - padding) / rowHeight);
   };
 
@@ -45,7 +52,7 @@
         line-height: var(--line-height)
 </style>
 
-<svelte:window on:mousemove={setPosition} on:scroll={setPosition}/>
+<svelte:window on:mousemove={setPosition} on:scroll={updatePositionOnScroll}/>
 <div style:--padding={`${padding}px`}>
   {#each Array(max) as _, i}
     <span
