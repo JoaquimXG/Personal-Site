@@ -7,7 +7,7 @@
     justify-content: space-between
     @media (max-width: 800px)
       flex-direction: column
-      gap: 2rem
+      gap: 4rem
 </style>
 
 <div>

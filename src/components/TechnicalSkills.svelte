@@ -33,29 +33,35 @@
     flex-wrap: wrap
     justify-content: space-around
     // margin: 4rem 0 0
-    gap: 3rem
+    gap: 1rem
 
   .skill
     display: flex
     flex-direction: column
     align-items: center
-    margin: 0 1.5rem
+    margin: 0 1rem
 
     img
-      width: 3.5rem
+      width: 2.5rem
       display: flex
     span
       text-align: center
       font-weight: 100
       // color: Set in tag
-      font-size: 1.5rem
+      font-size: 1rem
       margin-top: 1rem
+
+    .skillContainer
+      min-width: 2rem
+      min-height: 2rem
 </style>
 
 <div class="skills">
   {#each skills as skill}
   <div class="skill">
-    <img src={`${path}${skill.src}`} alt={skill.title}>
+    <div class="skillContainer">
+      <img src={`${path}${skill.src}`} alt={skill.title}>
+    </div>
     <span style:color={skill.color}>{skill.title}</span>
   </div>
   {/each}

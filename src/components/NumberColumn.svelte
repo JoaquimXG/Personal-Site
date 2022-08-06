@@ -1,14 +1,28 @@
 <script>
-  export const rowHeight = 22;
-  export const padding = 10;
+  import bodyHeight from "../stores/bodyHeight.js";
+  import debounce from "../util/debounce"
 
+  export const rowHeight = 20;
+  export const padding = 4;
   export let color;
   export let highlight;
-  export let highlighted;
-  export let height;
-  export let max = 120;
-  export let yPos;
-  export let totalScroll;
+  export let offset;
+
+  let highlighted;
+  let max = 120;
+  let yPos;
+  let totalScroll;
+  let delay = 200;
+
+
+  const updateMaxNumbers = debounce((height) => {
+    max = Math.floor((height-padding+offset)/rowHeight)+1;
+  }, delay)
+
+	bodyHeight.subscribe(height => {
+    updateMaxNumbers(height)
+    console.log(`bodyHeight: ${height} -- rowHeight: ${rowHeight} -- padding: ${padding} -- offset: ${offset}`);
+	});
 
   export const updatePositionOnScroll = (e) => {
     totalScroll = e.currentTarget.scrollY + yPos;
@@ -19,9 +33,6 @@
     yPos = e.clientY
     highlighted = Math.floor((e.pageY - padding) / rowHeight);
   };
-
-  // height = height - padding;
-  // $: max = Math.floor(height/rowHeight)+1;
 </script>
 
 <style lang="sass">
@@ -40,15 +51,13 @@
     width: 100vw
     letter-spacing: 1px
     //color: set in tag
-    font-family: "Inconsolata", monospace
-    font-size: 20px
+    font-size: 16px
     transition: color 0.05s ease-in-out
 
     &:before
         width: 40px
         content: var(--i)
         padding-left: 8px
-        font-size: 20px
         line-height: var(--line-height)
 </style>
 
@@ -61,4 +70,3 @@
       style:--line-height={`${rowHeight}px`} />
   {/each}
 </div>
-      <!-- style:--color={i + 1 === highlighted ? highlight : color} -->
