@@ -1,6 +1,6 @@
 <script>
-  export let alignRight;
-  export let twin;
+  export let alignRight = false;
+  export let twin = false;
   export let margin = "4rem 0"
 </script>
 

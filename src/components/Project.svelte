@@ -15,10 +15,15 @@
     margin-bottom: 2rem
     &:last-child
       margin-bottom: 0
+
+  .title
+    font-size: 1.3rem
+    line-height: 1.8rem
+
 </style>
 
 <div>
-  <span style:font-weight={bold}><a class="underline" {href}>{name}</a> ({year})</span>
+  <span style:font-weight={bold}><a class="title underline" {href}>{name}</a> ({year})</span>
   <br />
   <span style:font-weight={standard}>{description}</span>
 </div>
