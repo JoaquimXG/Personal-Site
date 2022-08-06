@@ -1,6 +1,6 @@
 require('dotenv').config();
 module.exports = {
-  origin: 'https://joaquimgomez.com', // TODO: update this. The URL of your site's root, without a trailing slash
+  origin: 'https://joaquimgomez.com',
   lang: 'en',
   srcDir: 'src',
   distDir: 'public',

@@ -1,6 +1,5 @@
 <script>
   import { blueCharcoal, cornflowerBlue, lavendar } from '../styles/colors';
-  // import NumberColumn from '../components/NumberColumn.svelte';
 
   //eslint-disable-next-line no-unused-props
   export let templateHtml, settings;
