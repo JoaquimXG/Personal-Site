@@ -9,22 +9,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
+      - uses: ./.github/actions/build.yml
         with:
-          node-version: 16.x
-          # cache: 'yarn' # Not required as only running on a single version
-
-      - run: yarn --non-interactive --frozen-lockfile
-      - run: yarn run build
-      - uses: actions/upload-artifact@v2
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test')
-        with:
-          name: public
-          path: public
+          upload: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test')
 
   deploy:
     environment: ${{ github.ref_name }} # This is dodgy, should use composite action instead
