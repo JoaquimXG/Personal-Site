@@ -27,6 +27,7 @@ jobs:
           path: public
 
   deploy:
+    environment: ${{ github.ref_name }} # This is dodgy, should use composite action instead
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test')
     needs: build
     runs-on: ubuntu-latest
@@ -37,14 +38,14 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: public
-      - run: ls public
+          path: public
       - uses: reggionick/s3-deploy@v3
         with:
           folder: public
           bucket: ${{ secrets.S3_BUCKET }}
-          bucket-region: ${{ secrets.S3_BUCKET_REGION }}
+          bucket-region: eu-west-2
           dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          invalidation: /
+          invalidation: /*
           delete-removed: true
           no-cache: true
           filesToInclude: ".*/*,*/*,**"
