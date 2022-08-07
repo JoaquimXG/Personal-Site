@@ -7,6 +7,8 @@ Site is static and hosted in S3 (at the moment).
 
 ## TODO
 
-1. Terraform gitignore
-2. Env vars for both makefile and terraform
-3. Auto deploy on main branch
+1. Deploy to live
+   1. Auto deploy on main branch `Needs testing`
+2. Auto deploy to test
+3. Check redirect from www in cloudfront
+4. Upload pre-zipped to s3?
