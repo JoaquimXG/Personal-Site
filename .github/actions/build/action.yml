@@ -1,10 +1,10 @@
 name: 'Build And Upload'
 description: 'Builds the site and uploads artifact if required'
 inputs:
-  upload:  # id of input
-    description: 'Should upload artifact'
+  upload_condition:
+    description: 'Condition for when to upload an artifact'
     required: true
-    default: false
+    default: 'false'
   upload_name:
     description: 'Name of artifact'
     required: false
@@ -25,12 +25,12 @@ runs:
       shell: bash
     - run: yarn run build
       shell: bash
+    - run: echo Uploading
+      if: ${{ upload_condition }}
+      shell: bash
     - uses: actions/upload-artifact@v2
-      # if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test')
-      if: ${{ inputs.upload == 'true' }}
+      if: ${{ upload_condition }}
       with:
         name: ${{ inputs.upload_name }}
         path: ${{ inputs.upload_path }}
-    - run: echo Should upload; ${{ inputs.upload }}
-      shell: bash
 
