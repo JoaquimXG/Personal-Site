@@ -31,3 +31,6 @@ runs:
       with:
         name: ${{ inputs.upload_name }}
         path: ${{ inputs.upload_path }}
+    - run: echo Should upload; ${{ inputs.upload }}
+      shell: bash
+
