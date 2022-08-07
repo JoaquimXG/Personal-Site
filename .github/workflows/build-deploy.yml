@@ -21,6 +21,7 @@ jobs:
       - run: yarn --non-interactive --frozen-lockfile
       - run: yarn run build
       - uses: actions/upload-artifact@v2
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
           name: public
           path: public
