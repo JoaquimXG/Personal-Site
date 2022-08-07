@@ -1,5 +1,8 @@
 {
   "cSpell.words": [
     "systemjs"
-  ]
+  ],
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///home/main/code/mysite/.github/workflows/deploy.yml"
+  }
 }
