@@ -47,3 +47,9 @@ variable "certificate_id" {
   type        = string
   description = "ACM certfiicate ID for certificate matching given domain"
 }
+
+variable "use_www" {
+  type = bool
+  default = true
+  description = "If true, use www.domain as an additional cloudfront alias. This should be avoided if the certificate used does not cover the www domain"
+}

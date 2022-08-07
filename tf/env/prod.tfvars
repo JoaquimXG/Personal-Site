@@ -13,6 +13,8 @@ site_bucket_name = "xjg.prod.mysite"
 
 site_domain = "joaquimgomez.com"
 
-site_subdomain = "mysite"
+site_subdomain = ""
 
 certificate_id = "arn:aws:acm:us-east-1:479916576255:certificate/ee1ccaa9-63f3-417c-b85c-3a33868c0f0b"
+
+use_www = true

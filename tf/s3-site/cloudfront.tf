@@ -8,7 +8,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   is_ipv6_enabled     = true
   default_root_object = "index.html"
 
-  aliases = ["${local.full_domain}"]#, "www.${local.full_domain}"]
+  aliases = flatten(["${local.full_domain}", var.use_www ? ["www.${local.full_domain}"]: []])
 
   default_cache_behavior {
     allowed_methods        = ["GET", "HEAD"]

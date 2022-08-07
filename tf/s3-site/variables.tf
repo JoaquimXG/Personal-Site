@@ -30,3 +30,9 @@ variable "distribution_tags" {
   description = "Tags to apply to the site distribution"
   default     = {}
 }
+
+variable "use_www" {
+  type = bool
+  default = true
+  description = "If true, use www.domain as an additional cloudfront alias. This should be avoided if the certificate used does not cover the www domain"
+}

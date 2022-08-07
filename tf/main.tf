@@ -42,5 +42,6 @@ module "site" {
 
   bucket_name  = var.site_bucket_name
   s3_origin_id = var.site_s3_origin_id
-  acm_cert_id  = var.certificate_id # TODO
+  acm_cert_id  = var.certificate_id
+  use_www      = var.use_www
 }
