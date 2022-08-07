@@ -14,7 +14,8 @@ jobs:
       - uses: ./.github/actions/build
         with:
           # upload: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test')
-          upload_condition: github.event_name == 'push' && (github.ref == 'refs/heads/dev')
+          # upload_condition: github.event_name == 'push' && (github.ref == 'refs/heads/dev')
+          upload_condition: true
 
   deploy:
     environment: ${{ github.ref_name }} # This is dodgy, should use composite action instead
