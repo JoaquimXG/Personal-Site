@@ -3,7 +3,8 @@
     "systemjs"
   ],
   "yaml.schemas": {
-    "https://json.schemastore.org/github-workflow.json": "file:///home/main/code/mysite/.github/workflows/deploy.yml"
+    "https://json.schemastore.org/github-workflow.json": "file:///home/main/code/mysite/.github/workflows/deploy.yml",
+    "https://json.schemastore.org/github-action.json": "file:///home/main/code/mysite/.github/actions/build/action.yml"
   },
   "[makefile]": {
     "editor.detectIndentation": false

@@ -3,13 +3,13 @@ export default [
     name: 'POD Colors',
     description: 'A personality test web-app for Robert Gordon University HR department',
     year: '2020',
-    href: './podcolours/',
+    href: 'https://podcolours.joaquimgomez.com',
   },
   {
     name: 'Bookmark',
     description: 'An IT documentation platform using React and GraphQL',
     year: '2020',
-    href: 'http://google.com',
+    href: 'https://github.com/JoaquimXG/Bookmark',
   },
   {
     name: 'SQLi-Labs',

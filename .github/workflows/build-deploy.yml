@@ -2,49 +2,28 @@ name: Build and Deploy
 
 on:
   push:
-    branches: ["main", "dev", "test"]
-  pull_request:
-    branches: ["main"]
+    branches: ["main", "test"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
+      - uses: ./.github/actions/build
         with:
-          node-version: 16.x
-          # cache: 'yarn' # Not required as only running on a single version
-
-      - run: yarn --non-interactive --frozen-lockfile
-      - run: yarn run build
-      - uses: actions/upload-artifact@v2
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test')
-        with:
-          name: public
-          path: public
+          upload: 'true'
 
   deploy:
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test')
-    needs: build
     runs-on: ubuntu-latest
+    environment: ${{ github.ref_name }} # This is a bit brittle, using the branch name as the environment name
+    needs: build
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: ./.github/actions/deploy
         with:
-          name: public
-      - run: ls public
-      - uses: reggionick/s3-deploy@v3
-        with:
-          folder: public
           bucket: ${{ secrets.S3_BUCKET }}
-          bucket-region: ${{ secrets.S3_BUCKET_REGION }}
+          bucket-region: ${{ secrets.S3_BUCKET_REGION}}
           dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          invalidation: /
-          delete-removed: true
-          no-cache: true
-          filesToInclude: ".*/*,*/*,**"

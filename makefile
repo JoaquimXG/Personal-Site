@@ -21,15 +21,20 @@ clean:
 .PHONY: init-prod
 init-prod:
 	$(MAKE) tf-init
+	-cd tf && terraform workspace new prod
+	cd tf && terraform workspace select prod
 	cd tf && terraform apply -auto-approve -var-file=./env/prod.tfvars
 
 .PHONY: init-test
 init-test:
 	$(MAKE) tf-init
+	-cd tf && terraform workspace new test
+	cd tf && terraform workspace select test
 	cd tf && terraform apply -auto-approve -var-file=./env/test.tfvars
 
 .PHONY: destroy-test
 destroy-test:
+	cd tf && terraform workspace select test
 	cd tf && terraform destroy -auto-approve -var-file=./env/test.tfvars
 
 # Deploy changes
