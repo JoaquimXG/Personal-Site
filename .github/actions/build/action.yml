@@ -26,10 +26,10 @@ runs:
     - run: yarn run build
       shell: bash
     - run: echo Uploading
-      if: ${{ upload_condition }}
+      if: ${{ inputs.upload_condition }}
       shell: bash
     - uses: actions/upload-artifact@v2
-      if: ${{ upload_condition }}
+      if: ${{ inputs.upload_condition }}
       with:
         name: ${{ inputs.upload_name }}
         path: ${{ inputs.upload_path }}
