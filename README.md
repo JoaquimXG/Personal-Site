@@ -7,8 +7,6 @@ Site is static and hosted in S3 (at the moment).
 
 ## TODO
 
-1. Terraform static site setup
-   1. S3 Bucket
-   2. Certificate from ACM
-2. Script to generate cert and upload to ACM
+1. Terraform gitignore
+2. Env vars for both makefile and terraform
 3. Auto deploy on main branch

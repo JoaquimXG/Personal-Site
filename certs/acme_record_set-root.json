@@ -5,7 +5,7 @@
       "ResourceRecordSet": {
         "Name": "_acme-challenge.joaquimgomez.com.",
         "Type": "TXT",
-        "TTL": 60,
+        "TTL": 5,
         "ResourceRecords": [
           {
             "Value": "\"\""
