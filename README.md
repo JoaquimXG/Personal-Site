@@ -9,8 +9,7 @@ Site is static and hosted in S3 (at the moment).
 
 ### Deployment
 
-1. Deploy to live
-   1. Auto deploy on main branch `Needs testing`
+1. Build workflow is duplicating when a pull request is opened on main when the source branch is dev
 3. Check redirect from www in cloudfront
 4. Upload pre-zipped to s3?
 
