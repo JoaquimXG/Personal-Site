@@ -26,5 +26,5 @@ jobs:
       - uses: ./.github/actions/deploy
         with:
           bucket: ${{ secrets.S3_BUCKET }}
-          bucket-region: ${{ secrets.S3_BUCKET_REGION}}
-          dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+          region: ${{ secrets.S3_BUCKET_REGION}}
+          distribution_id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
