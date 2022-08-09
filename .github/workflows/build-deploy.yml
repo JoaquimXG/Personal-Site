@@ -22,6 +22,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     steps:
+      - uses: actions/checkout@v3
       - uses: ./.github/actions/deploy
         with:
           bucket: ${{ secrets.S3_BUCKET }}
