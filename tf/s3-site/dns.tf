@@ -22,8 +22,10 @@ resource "aws_route53_record" "www_record" {
   type    = "A"
 
   alias {
-    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
-    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
+    name                   = aws_s3_bucket.redirect_bucket[0].website_domain
+    zone_id                = aws_s3_bucket.redirect_bucket[0].hosted_zone_id
+    # name                   = aws_cloudfront_distribution.s3_distribution_redirect[0].domain_name
+    # zone_id                = aws_cloudfront_distribution.s3_distribution_redirect[0].hosted_zone_id
     evaluate_target_health = false
   }
 }

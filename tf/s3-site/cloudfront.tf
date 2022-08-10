@@ -1,3 +1,8 @@
+# Cache and Compress
+data "aws_cloudfront_cache_policy" "cache_policy" {
+  name = "Managed-CachingOptimized"
+}
+
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name = aws_s3_bucket.site_bucket.bucket_regional_domain_name
@@ -8,7 +13,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   is_ipv6_enabled     = true
   default_root_object = "index.html"
 
-  aliases = flatten(["${local.full_domain}", var.use_www ? ["www.${local.full_domain}"]: []])
+  # aliases = flatten(["${local.full_domain}", var.use_www ? ["www.${local.full_domain}"]: []])
+  aliases = [local.full_domain]
 
   default_cache_behavior {
     allowed_methods        = ["GET", "HEAD"]
@@ -32,9 +38,4 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     acm_certificate_arn = var.acm_cert_id
     ssl_support_method  = "sni-only"
   }
-}
-
-# Cache and Compress
-data "aws_cloudfront_cache_policy" "cache_policy" {
-  name = "Managed-CachingOptimized"
 }
