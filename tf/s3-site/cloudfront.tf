@@ -4,14 +4,24 @@ data "aws_cloudfront_cache_policy" "cache_policy" {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
+  # origin {
+  #   domain_name = aws_s3_bucket.site_bucket.bucket_regional_domain_name
+  #   origin_id   = var.s3_origin_id
+  # }
+  // Using an S3 bucket as origin via standard HTTP in order to allow index.html files to be served for subfolders
   origin {
-    domain_name = aws_s3_bucket.site_bucket.bucket_regional_domain_name
+    domain_name = aws_s3_bucket.site_bucket.website_endpoint
     origin_id   = var.s3_origin_id
+    custom_origin_config {
+      http_port = 80
+      https_port = 443
+      origin_protocol_policy = "http-only"
+      origin_ssl_protocols = [ "TLSv1" ]
+    }
   }
 
   enabled             = true
   is_ipv6_enabled     = true
-  default_root_object = "index.html"
 
   aliases = [local.full_domain]
 
