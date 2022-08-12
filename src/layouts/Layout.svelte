@@ -34,6 +34,14 @@
     &::-webkit-scrollbar-track
       background-color: transparent
 
+  :global(main)
+    width: 100vw
+    max-width: 1200px
+    text-align: left
+    padding: 0 3.5rem
+    margin: auto
+
+
   :global(h1)
     // color: Set in tag
     font-family: "Roboto", sans-serif

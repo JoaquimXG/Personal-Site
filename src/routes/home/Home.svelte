@@ -11,11 +11,7 @@
 </script>
 
 <style lang="sass">
-  .numberColumnContainer
-    width: 100vw
-    display: flex
-    flex-direction: row
-    justify-content: center
+  @use '../../styles/numberColumn.sass'
 </style>
 
 <svelte:head>

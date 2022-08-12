@@ -15,9 +15,7 @@ Site is static and hosted in S3 (at the moment).
 
 ### Deployment
 
-1. Check redirect from www in cloudfront
-   - Apparently not possible to redirect www to non-www in CloudFront. Can be done with a secondary S3 bucket.
-2. 404 page
+1. 404 page
 
 ### Dev
 
