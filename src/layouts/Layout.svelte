@@ -11,7 +11,7 @@
     margin: 0
     padding: 0
     max-width: 100%
-    font-size: min(16px, calc(0.5em + 1vw))
+    font-size: min(16px, calc(0.5em + 1vw)) // 16px for large screens and shrinking for smaller screens.
     // @media (min-width: 800px)
     //   font-size: min(24px, calc(0.5em + 1vw))
     font-family: "Inconsolata", monospace
@@ -50,7 +50,7 @@
     // color: Set in tag
     font-family: "Roboto", sans-serif
     font-size: 3rem
-    margin: 112px 0 0.8rem 0
+    margin: 5rem 0 0.8rem 0
 
   :global(p)
     font-size: 1.2rem
