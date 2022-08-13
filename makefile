@@ -2,6 +2,8 @@ S3_BUCKET_PROD=xjg.prod.mysite
 S3_URL_PROD=s3://${S3_BUCKET_PROD}
 S3_BUCKET_TEST=xjg.test.mysite
 S3_URL_TEST=s3://${S3_BUCKET_TEST}
+DISTRIBUTION_ID=E155MXZDZ2UE56
+DISTRIBUTION_ID_TEST=E3JJQ6241NQ4R4
 CERT_PREFIX=fileb://`pwd`
 DOMAIN=joaquimgomez.com
 ZONE_ID=Z05872891QSB14YHO2BQ9
@@ -47,11 +49,13 @@ build:
 deploy-prod:
 	$(MAKE) build
 	aws s3 sync public ${S3_URL_PROD}
+	aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths '/*' > /dev/null
 
 .PHONY: deploy-test
 deploy-test:
 	$(MAKE) build
 	aws s3 sync public ${S3_URL_TEST}
+	aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID_TEST} --paths '/*' > /dev/null
 
 # Setup up Certificate and deploy cert to ACM
 # Certificate is for *.joaquimgomez.com and joaquimgomez.com

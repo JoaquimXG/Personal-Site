@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from "svelte";
+
   import bodyHeight from "../stores/bodyHeight.js";
   import debounce from "../util/debounce"
 
@@ -14,14 +16,12 @@
   let totalScroll;
   let delay = 200;
 
-
   const updateMaxNumbers = debounce((height) => {
     max = Math.floor((height-padding+offset)/rowHeight)+1;
   }, delay)
 
 	bodyHeight.subscribe(height => {
     updateMaxNumbers(height)
-    console.log(`bodyHeight: ${height} -- rowHeight: ${rowHeight} -- padding: ${padding} -- offset: ${offset}`);
 	});
 
   export const updatePositionOnScroll = (e) => {
@@ -33,6 +33,12 @@
     yPos = e.clientY
     highlighted = Math.floor((e.pageY - padding) / rowHeight);
   };
+
+  onMount(() => {
+    yPos = window.innerHeight/2
+    highlighted = Math.floor((window.innerHeight - padding) / rowHeight / 2);
+  }
+  );
 </script>
 
 <style lang="sass">
