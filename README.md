@@ -19,4 +19,4 @@ Site is static and hosted in S3 (at the moment).
 
 ### Dev
 
-1. Review optional loading of inconsolata on first page load
+`None for now`
