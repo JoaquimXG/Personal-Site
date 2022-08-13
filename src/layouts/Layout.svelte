@@ -6,11 +6,10 @@
 </script>
 
 <style lang="sass">
-  :global(html)
-    overflow-x: hidden // Prevent horizontal scrollbar, TODO - remove this when better solution is found
-
   :global(*)
     box-sizing: border-box
+    margin: 0
+    padding: 0
     max-width: 100%
     font-size: min(16px, calc(0.5em + 1vw))
     // @media (min-width: 800px)
@@ -20,10 +19,10 @@
     letter-spacing: 0.1rem
 
   :global(body)
-    margin: 0
+    margin: auto
     padding: 0
     background: var(--body-bg)
-    width: 100vw
+    width: 100%
     max-width: 1200px
     // color: Set in tag
     &::-webkit-scrollbar
