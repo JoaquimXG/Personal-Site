@@ -16,6 +16,7 @@ Site is static and hosted in S3 (at the moment).
 ### Deployment
 
 1. 404 page
+  - Page is working but styling is broken
 
 ### Dev
 

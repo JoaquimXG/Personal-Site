@@ -1,5 +1,5 @@
 <script>
-  import { blueCharcoal, cornflowerBlue, lavendar } from '../styles/colors';
+  import { blueCharcoal, /*violetRed,*/ cornflowerBlue, lavendar } from '../styles/colors';
 
   //eslint-disable-next-line no-unused-props
   export let templateHtml, settings;
@@ -68,6 +68,9 @@
     border-bottom: 1.5px solid var(--link-underline)
     color: var(--link-underline)
     padding-bottom: 1px
+    // &:visited
+    //   color: var(--link-visited)
+    //   border-color: var(--link-visited)
 </style>
 
 <svelte:head>
@@ -80,6 +83,7 @@
   style:--link-underline={cornflowerBlue}
   style:--body-bg={blueCharcoal}
   style:color={lavendar}>
+  <!-- style:--link-visited={violetRed} -->
   <!-- <div> -->
   {@html templateHtml}
   <!-- </div> -->
