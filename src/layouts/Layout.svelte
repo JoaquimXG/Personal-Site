@@ -23,6 +23,8 @@
     margin: 0
     padding: 0
     background: var(--body-bg)
+    width: 100vw
+    max-width: 1200px
     // color: Set in tag
     &::-webkit-scrollbar
       width: 10px
@@ -33,14 +35,14 @@
 
     &::-webkit-scrollbar-track
       background-color: transparent
+    padding: 0 3.5rem 0
+    @media (max-width: 800px)
+      padding: 0 3rem 0 4rem
 
   :global(main)
-    width: 100vw
-    max-width: 1200px
+    width: 100%
     text-align: left
-    padding: 0 3.5rem
     margin: auto
-
 
   :global(h1)
     // color: Set in tag

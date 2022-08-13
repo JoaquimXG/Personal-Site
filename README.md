@@ -20,7 +20,4 @@ Site is static and hosted in S3 (at the moment).
 ### Dev
 
 1. Use em for top margin
-2. Review and potentially fix increasing left margin to account for number column
-   - This means making body not centered slightly
-   - Probably should only be done on smaller screens
-3. Review optional loading of inconsolata on first page load
+2. Review optional loading of inconsolata on first page load
