@@ -34,9 +34,12 @@
 
     &::-webkit-scrollbar-track
       background-color: transparent
+
     padding: 0 3.5rem 0
-    @media (max-width: 800px)
+    @media (max-width: 1200px)
       padding: 0 3rem 0 4rem
+    @media (max-width: 800px)
+      padding: 0 2.8rem 0 4.2rem
 
   :global(main)
     width: 100%
