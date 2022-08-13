@@ -58,7 +58,7 @@
     letter-spacing: 1px
     //color: set in tag
     font-size: 16px
-    transition: color 0.05s ease-in-out
+    transition: color 0.1s ease-in-out
 
     &:before
         width: 40px
