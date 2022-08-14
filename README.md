@@ -15,7 +15,7 @@ Site is static and hosted in S3 (at the moment).
 
 ### Deployment
 
-1. Schedule and automate certificate generation and replacement
+`None for now`
 
 ### Dev
 
