@@ -1,11 +1,8 @@
 name: Refresh Cert
 
 on:
-  # schedule:
-  #   - cron: "0 0 15 */2 *"
-  push:
-    branches:
-      - automate-cert-deploy
+  schedule:
+    - cron: "0 0 15 */2 *"
 
 jobs:
   refresh-cert:
