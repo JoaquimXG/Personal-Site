@@ -44,6 +44,7 @@
 
     img
       width: var(--skill-width)
+      height: var(--skill-width)
       display: flex
     span
       text-align: center
