@@ -1,5 +1,6 @@
 <script>
   export const path = "/svg/";
+  export const skillWidth = "2.5rem"
 
   import {
     white,
@@ -42,7 +43,7 @@
     margin: 0 1rem
 
     img
-      width: 2.5rem
+      width: var(--skill-width)
       display: flex
     span
       text-align: center
@@ -52,14 +53,14 @@
       margin-top: 1rem
 
     .skillContainer
-      min-width: 2rem
-      min-height: 2rem
+      min-width: var(--skill-width)
+      min-height: var(--skill-width)
 </style>
 
 <div class="skills">
   {#each skills as skill}
   <div class="skill">
-    <div class="skillContainer">
+    <div style:--skill-width={skillWidth} class="skillContainer">
       <img src={`${path}${skill.src}`} alt={skill.title}>
     </div>
     <span style:color={skill.color}>{skill.title}</span>
