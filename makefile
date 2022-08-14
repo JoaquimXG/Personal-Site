@@ -64,7 +64,7 @@ deploy-test:
 # When testing, site should use on x.joaquimgomez.com
 # On live, site should use both joaquimgomez.com and www.joaquimgomez.com
 .PHONY: refresh-cert
-cert53:
+refresh-cert:
 	$(MAKE) cert
 	$(MAKE) upload-cert
 
