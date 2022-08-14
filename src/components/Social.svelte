@@ -9,6 +9,8 @@
     height: calc(0.5em + 6vw)
     max-width: 50px
     min-width: 35px
+    max-height: 50px
+    min-height: 35px
 </style>
 
 <div>
