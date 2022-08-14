@@ -3,7 +3,7 @@ export default [
     name: 'POD Colors',
     description: 'A personality test web-app for Robert Gordon University HR department',
     year: '2020',
-    href: 'https://podcolours.joaquimgomez.com',
+    href: 'https://podcolours.joaquimgomez.com/',
   },
   {
     name: 'Bookmark',

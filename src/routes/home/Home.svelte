@@ -7,15 +7,11 @@
   import { lavendar, rhino } from '../../styles/colors';
 
   export let settings;
-  export const homeMarginOffset = 176; //Top and bottom pixel margin offset
+  export const homeMarginOffset = 124; //Top and bottom pixel margin offset
 </script>
 
 <style lang="sass">
-  .numberColumnContainer
-    width: 100vw
-    display: flex
-    flex-direction: row
-    justify-content: center
+  @use '../../styles/numberColumn.sass'
 </style>
 
 <svelte:head>

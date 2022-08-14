@@ -8,6 +8,7 @@
   import Experience from './Experience.svelte';
   import Project from './Project.svelte';
   import Blurb from './Blurb.svelte';
+  import Footer from './Footer.svelte';
 
   // Colours
   import { lavendar, olivine, froly, mediumOrchid, cornflowerBlue } from '../styles/colors';
@@ -19,18 +20,7 @@
 
   // Stores
   import bodyHeight from '../stores/bodyHeight.js';
-import Footer from './Footer.svelte';
 </script>
-
-<style lang="sass">
-  main
-    width: 100vw
-    max-width: 1200px
-    text-align: left
-    padding: 0 3.5rem
-    margin: auto
-
-</style>
 
 <div bind:clientHeight={$bodyHeight}>
   <main>

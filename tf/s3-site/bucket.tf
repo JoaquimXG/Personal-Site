@@ -9,7 +9,7 @@ resource "aws_s3_bucket_website_configuration" "site_config" {
     suffix = "index.html"
   }
   error_document {
-    key = "index.html"
+    key = "404/index.html"
   }
 }
 

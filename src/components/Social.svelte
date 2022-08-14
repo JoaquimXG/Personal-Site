@@ -6,6 +6,7 @@
 
   img
     width: calc(0.5em + 6vw)
+    height: calc(0.5em + 6vw)
     max-width: 50px
     min-width: 35px
 </style>

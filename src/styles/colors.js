@@ -8,6 +8,7 @@ export const froly = '#E06C75';
 export const cornflowerBlue = '#61AFEF';
 export const mediumOrchid = '#C678DD';
 export const corvette = '#E5C074';
+export const violetRed = '#B31C82';
 
 // Technical Skils
 export const white = '#fff';

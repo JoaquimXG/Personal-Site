@@ -2,7 +2,11 @@ S3_BUCKET_PROD=xjg.prod.mysite
 S3_URL_PROD=s3://${S3_BUCKET_PROD}
 S3_BUCKET_TEST=xjg.test.mysite
 S3_URL_TEST=s3://${S3_BUCKET_TEST}
-CERT_PREFIX=fileb://`pwd`
+DISTRIBUTION_ID=E155MXZDZ2UE56
+DISTRIBUTION_ID_TEST=E3JJQ6241NQ4R4
+CERT_DIR=`pwd`/certs
+CERT_PREFIX=fileb://${CERT_DIR}
+CERT_EMAIL=joaquim.q.gomez@gmail.com
 DOMAIN=joaquimgomez.com
 ZONE_ID=Z05872891QSB14YHO2BQ9
 CERT_ID=arn:aws:acm:us-east-1:479916576255:certificate/ee1ccaa9-63f3-417c-b85c-3a33868c0f0b
@@ -47,28 +51,36 @@ build:
 deploy-prod:
 	$(MAKE) build
 	aws s3 sync public ${S3_URL_PROD}
+	aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths '/*' > /dev/null
 
 .PHONY: deploy-test
 deploy-test:
 	$(MAKE) build
 	aws s3 sync public ${S3_URL_TEST}
+	aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID_TEST} --paths '/*' > /dev/null
 
 # Setup up Certificate and deploy cert to ACM
 # Certificate is for *.joaquimgomez.com and joaquimgomez.com
 # When testing, site should use on x.joaquimgomez.com
 # On live, site should use both joaquimgomez.com and www.joaquimgomez.com
+.PHONY: refresh-cert
+refresh-cert:
+	$(MAKE) cert
+	$(MAKE) upload-cert
+
 .PHONY: cert
 cert:
-	certbot certonly --manual --preferred-challenges dns -d *.${DOMAIN} -d ${DOMAIN} --work-dir ./certs --config-dir ./certs --logs-dir ./certs
-
-.PHONY: set-acme-root
-set-acme-root:
-	aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch "`cat ./certs/acme_record_set-root.json`"
-
-.PHONY: set-acme-www
-set-acme-www:
-	aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch "`cat ./certs/acme_record_set-www.json`"
+	certbot certonly --non-interactive --agree-tos --dns-route53 -d *.${DOMAIN} -d ${DOMAIN} --email ${CERT_EMAIL} --work-dir ${CERT_DIR} --config-dir ${CERT_DIR} --logs-dir ${CERT_DIR}
 
 .PHONY: upload-cert
 upload-cert:
-	aws acm import-certificate --certificate-arn '${CERT_ID}' --region us-east-1 --certificate-chain ${CERT_PREFIX}/certs/live/${DOMAIN}/fullchain.pem --private-key ${CERT_PREFIX}/certs/live/${DOMAIN}/privkey.pem --certificate ${CERT_PREFIX}/certs/live/${DOMAIN}/cert.pem
+	aws acm import-certificate --certificate-arn '${CERT_ID}' --region us-east-1 --certificate-chain ${CERT_PREFIX}/live/${DOMAIN}/fullchain.pem --private-key ${CERT_PREFIX}/live/${DOMAIN}/privkey.pem --certificate ${CERT_PREFIX}/live/${DOMAIN}/cert.pem > /dev/null
+
+# No longer required as using Route53 plugin for certbot
+# .PHONY: set-acme-root
+# set-acme-root:
+# 	aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch "`cat ./certs/acme_record_set-root.json`"
+
+# .PHONY: set-acme-www
+# set-acme-www:
+# 	aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch "`cat ./certs/acme_record_set-www.json`"
