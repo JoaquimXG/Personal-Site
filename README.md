@@ -19,4 +19,8 @@ Site is static and hosted in S3 (at the moment).
 
 ### Dev
 
-`None for now`
+1. Poor contrast on some Skill Section items.
+   - Not enough to bring Accessibility score for Lighthouse below 90 but worth fixing at some point.
+2. Only 98 of 100 for performance LightHouse score.
+  - Due to CLS 0.112
+  - Honestly not sure what the source is
