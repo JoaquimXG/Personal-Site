@@ -15,8 +15,8 @@ Site is static and hosted in S3 (at the moment).
 
 ### Deployment
 
-`None for now`
+None for now
 
 ### Dev
 
-`None for now`
+None for now
