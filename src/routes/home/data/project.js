@@ -1,6 +1,6 @@
 export default [
   {
-    name: 'Honours Project: COVID-19 Detection Generalisability',
+    name: 'Honours Project',
     description: 'Questioning and assessing the generalisability of proposed state-of-the-art computer vision models for detecting COVID-19 in chest X-rays',
     year: '2023',
     href: 'https://github.com/JoaquimXG/Honours-Project',
