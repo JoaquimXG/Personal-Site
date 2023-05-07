@@ -3,25 +3,24 @@ export default [
         start: "2021",
         end: "Present",
         location: "Bluberry Consultants",
-        role: "Junior DevOps Engineer"
+        role: "DevOps Engineer"
     },
     {
         start: "2020",
         end: "2021",
         location: "Aberdeen Cyber Security",
-        role: "Cyber Security Analyst"
+        role: "Cyber Security Project Engineer"
     },
     {
         start: "2020",
-        end: "Present",
+        end: "2023",
         location: "Robert Gordon University",
-        role: "Computer Science BSc (Hons)"
+        role: "Computer Science BSc (Hons), Grade 1:1"
     },
     {
         start: "2019",
         end: "2020",
         location: "North East Scotland College",
-        role: "Cyber Security HNC"
+        role: "Cyber Security HNC, Grade A"
     }
 ];
-
