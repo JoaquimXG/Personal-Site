@@ -10,6 +10,8 @@ CERT_EMAIL=joaquim.q.gomez@gmail.com
 DOMAIN=joaquimgomez.com
 ZONE_ID=Z05872891QSB14YHO2BQ9
 CERT_ID=arn:aws:acm:us-east-1:479916576255:certificate/ee1ccaa9-63f3-417c-b85c-3a33868c0f0b
+CACHE_CONTROLLED=_elderjs svg font
+CACHE_CONTROL_AGE=86400
 
 .PHONY: clean
 clean:
@@ -50,14 +52,28 @@ build:
 .PHONY: deploy-prod
 deploy-prod:
 	$(MAKE) build
-	aws s3 sync public ${S3_URL_PROD}
+	for folder in ${CACHE_CONTROLLED}; do \
+		aws s3 sync --delete public/$$folder ${S3_URL_PROD}/$$folder --cache-control max-age=${CACHE_CONTROL_AGE}; \
+	done
+	aws s3 sync --delete public ${S3_URL_PROD}
 	aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths '/*' > /dev/null
 
 .PHONY: deploy-test
 deploy-test:
 	$(MAKE) build
-	aws s3 sync public ${S3_URL_TEST}
+	for folder in ${CACHE_CONTROLLED}; do \
+		aws s3 sync --delete public/$$folder ${S3_URL_TEST}/$$folder --cache-control max-age=${CACHE_CONTROL_AGE}; \
+	done
+	aws s3 sync --delete public ${S3_URL_TEST}
 	aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID_TEST} --paths '/*' > /dev/null
+
+.PHONY: clean-prod
+clean-prod:
+	aws s3 rm --recursive ${S3_URL_PROD}
+
+.PHONY: clean-test
+clean-test:
+	aws s3 rm --recursive ${S3_URL_TEST}
 
 # Setup up Certificate and deploy cert to ACM
 # Certificate is for *.joaquimgomez.com and joaquimgomez.com
@@ -70,7 +86,7 @@ refresh-cert:
 
 .PHONY: cert
 cert:
-	certbot certonly --non-interactive --agree-tos --dns-route53 -d *.${DOMAIN} -d ${DOMAIN} --email ${CERT_EMAIL} --work-dir ${CERT_DIR} --config-dir ${CERT_DIR} --logs-dir ${CERT_DIR}
+	certbot certonly --key-type rsa --rsa-key-size 2048 --non-interactive --agree-tos --dns-route53 -d *.${DOMAIN} -d ${DOMAIN} --email ${CERT_EMAIL} --work-dir ${CERT_DIR} --config-dir ${CERT_DIR} --logs-dir ${CERT_DIR}
 
 .PHONY: upload-cert
 upload-cert:
