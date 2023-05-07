@@ -9,9 +9,7 @@ Site is static and hosted in S3 (at the moment).
 
 ### Content
 
-1. Update blurb
-2. Add recent projects
-3. Update Experience
+1. Add recent projects
 
 ### Deployment
 
