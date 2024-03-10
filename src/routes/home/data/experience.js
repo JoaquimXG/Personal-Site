@@ -1,7 +1,13 @@
 export default [
     {
-        start: "2021",
+        start: "2023",
         end: "Present",
+        location: "Aretiico",
+        role: "DevOps Engineer"
+    },
+    {
+        start: "2021",
+        end: "2023",
         location: "Bluberry Consultants",
         role: "DevOps Engineer"
     },
