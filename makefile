@@ -13,6 +13,10 @@ CERT_ID=arn:aws:acm:us-east-1:479916576255:certificate/ee1ccaa9-63f3-417c-b85c-3
 CACHE_CONTROLLED=_elderjs svg font
 CACHE_CONTROL_AGE=86400
 
+PYTHON_VENV=.venv
+PYTHON_VENV_SOURCE=${PYTHON_VENV}/bin/activate
+CLOUDFLARE_CREDENTIALS=${CERT_DIR}/cloudflare.ini
+
 .PHONY: clean
 clean:
 	-rm -rf public/*
@@ -84,15 +88,34 @@ refresh-cert:
 	$(MAKE) cert
 	$(MAKE) upload-cert
 
+# Creates the virtualenv holding certbot and the Cloudflare DNS plugin.
+# Safe to re-run, pip will no-op if the requirements are already satisfied.
+.PHONY: venv
+venv:
+	test -d ${PYTHON_VENV} || python3 -m venv ${PYTHON_VENV}
+	. ${PYTHON_VENV_SOURCE} && pip install --quiet --upgrade certbot certbot-dns-cloudflare
+
+# Writes the credentials file certbot-dns-cloudflare reads.
+# Requires CLOUDFLARE_API_TOKEN in the environment, scoped to Zone:DNS:Edit
+# for ${DOMAIN}. certbot refuses to use the file if it is group/world readable.
+.PHONY: cloudflare-credentials
+cloudflare-credentials:
+	@test -n "$$CLOUDFLARE_API_TOKEN" || (echo "CLOUDFLARE_API_TOKEN is not set" && exit 1)
+	@mkdir -p ${CERT_DIR}
+	@echo "dns_cloudflare_api_token = $$CLOUDFLARE_API_TOKEN" > ${CLOUDFLARE_CREDENTIALS}
+	@chmod 600 ${CLOUDFLARE_CREDENTIALS}
+
 .PHONY: cert
 cert:
-	certbot certonly --key-type rsa --rsa-key-size 2048 --non-interactive --agree-tos --dns-route53 -d *.${DOMAIN} -d ${DOMAIN} --email ${CERT_EMAIL} --work-dir ${CERT_DIR} --config-dir ${CERT_DIR} --logs-dir ${CERT_DIR}
+	$(MAKE) venv
+	$(MAKE) cloudflare-credentials
+	. ${PYTHON_VENV_SOURCE} && certbot certonly --cert-name ${DOMAIN} --key-type rsa --rsa-key-size 2048 --non-interactive --agree-tos --dns-cloudflare --dns-cloudflare-credentials ${CLOUDFLARE_CREDENTIALS} -d '*.${DOMAIN}' -d ${DOMAIN} --email ${CERT_EMAIL} --work-dir ${CERT_DIR} --config-dir ${CERT_DIR} --logs-dir ${CERT_DIR}
 
 .PHONY: upload-cert
 upload-cert:
 	aws acm import-certificate --certificate-arn '${CERT_ID}' --region us-east-1 --certificate-chain ${CERT_PREFIX}/live/${DOMAIN}/fullchain.pem --private-key ${CERT_PREFIX}/live/${DOMAIN}/privkey.pem --certificate ${CERT_PREFIX}/live/${DOMAIN}/cert.pem > /dev/null
 
-# No longer required as using Route53 plugin for certbot
+# No longer required as using the Cloudflare DNS plugin for certbot
 # .PHONY: set-acme-root
 # set-acme-root:
 # 	aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch "`cat ./certs/acme_record_set-root.json`"
